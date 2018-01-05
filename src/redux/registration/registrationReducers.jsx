@@ -12,8 +12,9 @@ const registrationReducer = function (state=defaultState, action) {
             return loginUserHandler(state,action.payload);
         case "LOGOUT":
             return logoutUserHandler(state)
+        default: return state;
     }
-    return state;
+    
 };
 
 function registrationUserHandler(state, userLogin){
@@ -27,11 +28,11 @@ function registrationUserHandler(state, userLogin){
 
 
 function loginUserHandler(state, userLogin){
-    let allUsers = state.users.slice(0);
+   
     
     for(let i = 0; i < state.users.length; i++)
     {
-        if (state.users[i].userLogin == userLogin.userLogin && state.users[i].pass == userLogin.pass)
+        if (state.users[i].userLogin === userLogin.userLogin && state.users[i].pass === userLogin.pass)
             {
                 
                 return {
@@ -47,13 +48,16 @@ function loginUserHandler(state, userLogin){
 
 function logoutUserHandler(state)
 {
-    
-    return {
+   if(state.currentUser) 
+    {
+        return {
             ...state,
             currentUser: null
         }
+    }
+    else
+        return state;
     
-    return state;
 }
 
 export default registrationReducer;

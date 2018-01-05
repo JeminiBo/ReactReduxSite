@@ -1,16 +1,12 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import store from './redux/store/index';
 import RegistrationComponent from './components/registration/RegistrationComponent.jsx';
 import LoginComponent from './components/login/LoginComponent.jsx';
 import NavbarBlock from './components/navbarBlock/NavbarBlockComponent.jsx';
 import Content from './components/content/content.jsx';
-
 import './App.css';
-
 import Home from './components/homePage/Home';
-
-import redux from 'redux';
 import {Provider} from 'react-redux';
 
 

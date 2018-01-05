@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {Button} from "react-bootstrap"
-import {BrowserRouter as Router, Route, Switch, Link} from 'react-router-dom';
 import {login} from '../../redux/registration/registrationActions.jsx'
 import {bindActionCreators} from 'redux'
 
@@ -11,12 +10,12 @@ class LoginForm extends React.Component {
        
     }
     
-    onClick() {
-        if (this.refs.loginInput.value !== ''){
-            var loginText = this.refs.loginInput.value;
-            var passText = this.refs.passInput.value;
-            this.refs.loginInput.value = '';
-            this.refs.passInput.value = '';
+    logOn() {
+        if (this.refs.userLogin.value !== ''){
+            var loginText = this.refs.userLogin.value;
+            var passText = this.refs.userPass.value;
+            this.refs.userLogin.value = '';
+            this.refs.userPass.value = '';
             
             return this.props.login(loginText, passText);
         }
@@ -30,11 +29,11 @@ class LoginForm extends React.Component {
       
             
             <p>Логин</p>
-            <input ref='loginInput' />
+            <input ref='userLogin' />
             <p>Пароль</p>
-            <input ref='passInput'  />
+            <input ref='userPass'  />
             <br></br>   
-                <Button  bsStyle="primary" bsSize="large" onClick = {this.onClick.bind(this)} >Авторизоваться</Button>
+                <Button  bsStyle="primary" bsSize="large" onClick = {this.logOn.bind(this)} >Авторизоваться</Button>
             </div>
         )
     }
